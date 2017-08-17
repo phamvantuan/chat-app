@@ -24,15 +24,15 @@ io.on('connection', (socket) => {
 	socket.broadcast.emit('newMessage', generateMessage('Admin','New user joined'))
 
 
-	socket.on('createMessage',(mesage) => {
+	socket.on('createMessage',(mesage,callback) => {
 		console.log('createMessage',mesage);
+		io.emit('newMessage',generateMessage(mesage.from,mesage.text));
+		callback('This is from the server');
 		// io.emit('newMessage',{
 		// 	from: mesage.from,
 		// 	text: mesage.text,
 		// 	createAt: new Date().getTime()
 		// })
-
-		socket.broadcast.emit('newMessage',generateMessage(mesage.from,mesage.text));
 	});
 
 
