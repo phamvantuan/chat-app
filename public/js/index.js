@@ -4,11 +4,6 @@
 			console.log('Connected to server')
 		});
 
-		socket.emit('createMessage', {
-			from: 'tuanpham@gmail.com',
-			'text': 'Yup, that works for me'
-		});
-
 		socket.on('disconnect', () => {
 			console.log('Disconnected From server');
 		});
